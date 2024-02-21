@@ -47,7 +47,7 @@ def fees_report(infile, outfile):
         reader = DictReader(csvfile)
         for row in reader:
             due_date = datetime.strptime(row['date_due'], '%m/%d/%Y')
-            returned_date = datetime.strptime(row['date_returned'], '%m/%d/%y')
+            returned_date = datetime.strptime(row['date_returned'], '%m/%d/%Y')
             days_late = (returned_date - due_date).days
             if days_late > 0:
                 patron_id = row['patron_id']
