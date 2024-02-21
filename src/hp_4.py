@@ -56,6 +56,7 @@ def fees_report(infile, outfile):
 
     with open(outfile, 'w', newline='') as csvfile:
         writer = DictWriter(csvfile, fieldnames=['patron_id', 'late_fees'])
+        unique_patron_ids = set(late_fees.keys())
         writer.writeheader()
         for patron_id, fee in late_fees.items():
             writer.writerow({'patron_id': patron_id, 'late_fees': "{:.2f}".format(fee)})
