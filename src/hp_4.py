@@ -48,7 +48,7 @@ def fees_report(infile, outfile):
         for row in reader:
             due_date = datetime.strptime(row['date_due'], '%m/%d/%Y')
             returned_date = datetime.strptime(row['date_returned'], '%m/%d/%Y')
-            days_late = (returned_date - due_date).days
+            days_late = max((returned_date - due_date).days,0)
             patron_id = row['patron_id']
             late_fee = days_late * 0.25
             late_fees[patron_id] += late_fee
